@@ -3,4 +3,35 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: 20px;
+}
+
+.green-button {
+  background-color: #479488;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+hr {
+  width: 8vw;
+  margin: 0 auto;
+}
+
+#searchForm {
+  display: none;
+  margin-top: 20px;
+}
+#searchForm input,
+#searchForm button {
+  margin-right: 10px;
+}
+
 /*# sourceMappingURL=style.css.map */
