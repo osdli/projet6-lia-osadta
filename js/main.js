@@ -120,6 +120,16 @@ document.addEventListener("DOMContentLoaded", function() {
   
     // Appliquer des styles au bouton "Ajouter un livre"
     addButton.style.marginTop = "20px"; // Ajouter une marge supérieure
+
+        // Récupération de l'élément "myBooks"
+    var myBooksContainer = document.getElementById("myBooks");
+
+    // Création du conteneur pour la poch'liste
+    var pochlisteContainer = document.createElement("div");
+    pochlisteContainer.id = "pochlisteContainer";
+
+    // Ajouter le conteneur de la poch'liste à l'élément "myBooks"
+    myBooksContainer.appendChild(pochlisteContainer);
   });
   
 
