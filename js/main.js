@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Récupération de l'élément "myBooks"
     var myBooksContainer = document.getElementById("myBooks");
+    
 
     // Création du conteneur pour la poch'liste
     var pochlisteContainer = document.createElement("div");
@@ -130,6 +131,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Ajouter le conteneur de la poch'liste à l'élément "myBooks"
     myBooksContainer.appendChild(pochlisteContainer);
+
+    // Affichez les livres depuis le SessionStorage lorsque la page est chargée
+    displayBooksFromSession();
   });
   
 

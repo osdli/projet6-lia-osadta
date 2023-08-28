@@ -121,7 +121,20 @@
   
     // Ajouter le livre à la poch'liste
     pochlisteContainer.appendChild(bookElement);
+
+    // Ajouter le livre aux favoris en créant dynamiquement l'élément dans le corps de la page
+  var favoritesContainer = document.getElementById("favoritesContainer");
+  if (!favoritesContainer) {
+    favoritesContainer = document.createElement("div");
+    favoritesContainer.id = "favoritesContainer";
+    document.body.appendChild(favoritesContainer);
   }
+
+  var favoriteBookElement = document.createElement("div");
+  favoriteBookElement.textContent = bookTitle;
+  favoritesContainer.appendChild(favoriteBookElement);
+  }
+  
   function addBookToSession(bookId, bookTitle) {
     var sessionData = sessionStorage.getItem("pochliste");
     var pochliste = sessionData ? JSON.parse(sessionData) : [];
@@ -153,6 +166,42 @@
     sessionStorage.setItem("pochliste", JSON.stringify(updatedPochliste));
   }
   
+  function displayBooksFromSession() {
+    var sessionData = sessionStorage.getItem("pochliste");
+    var pochliste = sessionData ? JSON.parse(sessionData) : [];
+
+    var pochlisteContainer = document.getElementById("pochlisteContainer");
+  
+    // Effacer le conteneur de la poch'liste pour éviter les doublons
+    pochlisteContainer.innerHTML = "";
+
+    pochliste.forEach(function(book) {
+        var bookElement = document.createElement("div");
+        bookElement.classList.add("pochliste-book");
+        bookElement.setAttribute("data-book-id", book.bookId);
+  
+        var titleElement = document.createElement("h4");
+        titleElement.textContent = book.bookTitle;
+  
+        var removeButton = document.createElement("button");
+        removeButton.textContent = "Retirer";
+        removeButton.addEventListener("click", function() {
+            // Supprimer le livre de la poch'liste visuellement
+            bookElement.remove();
+            // Supprimer le livre de la session également
+            removeBookFromSession(book.bookId);
+        });
+  
+        bookElement.appendChild(titleElement);
+        bookElement.appendChild(removeButton);
+        pochlisteContainer.appendChild(bookElement);
+    });
+}
+
+
+  
+
+
   
   
   
