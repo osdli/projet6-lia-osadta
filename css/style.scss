@@ -2,96 +2,364 @@
 
 $green-color: #479488;
 
+/* Styles pour mobile */
+@media only screen and (max-width: 767px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      margin-top: 20px;
+    }
+    
+    #myBooks {
+      img[src="img/logo/logo.png"] {
+        width: 60px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        max-width: 100%;
+      }
+    }
+    
+    .green-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    
+    hr {
+      width: 12vw;
+    }
+    
+    #searchForm {
+      margin-bottom: 300px;
+    }
+    
+    #content {
+      margin-bottom: 100px;
+    }
+    
+    h2 {
+      font-size: 24px;
+    }
+    
+    .title {
+      margin-top: 10px;
+      font-size: 28px;
+    }
+    
+    .cancel-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    
+    .search-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    
+    .form-field {
+      label {
+        font-size: 14px;
+      }
+    
+      input[type="text"] {
+        padding: 3px;
+      }
+    }
+    
+    .book-card {
+      img {
+        flex-basis: 100%;
+      }
+    }
+  }
+  
+  // Styles pour tablette
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+      justify-content: center; // Centrer les éléments horizontalement
+      align-items: center; // Centrer les éléments verticalement
+    }
+  
+    #myBooks {
+      width: 80%; // Définir la largeur à 80% de la largeur de la page
+      max-width: none; // Réinitialiser la valeur maximale de la largeur
+    }
+  
+    .green-button,
+    hr,
+    .cancel-button,
+    .search-button {
+      width: 80%; // Définir la largeur des boutons et de la ligne à 80% de la largeur de la page
+    }
+  
+    #searchForm {
+      width: 80%; 
+      display: flex; 
+      justify-content: space-between; // Répartir l'espace disponible entre les boutons
+      align-items: center; // Centrer les éléments verticalement
+    }
+  
+    .form-field {
+      flex-basis: 45%; // Définir la largeur des champs de texte à 45% de la largeur du formulaire
+    }
+  
+    .search-button,
+    .cancel-button {
+      flex-basis: 45%; // Définir la largeur des boutons à 45% de la largeur du formulaire
+    }
+  
+    #content {
+      width: 80%; 
+      height: auto; 
+      margin-bottom: 0; 
+    }
+  
+    h2,
+    .title {
+      font-size: 24px; // Ajuster la taille de la police
+      text-align: center; // Centrer le texte horizontalement
+    }
+  
+    .form-field {
+      input[type="text"] {
+        padding: 8px; // Ajuster le rembourrage du champ de texte
+      }
+    }
+  
+    .title {
+      margin-top: 20px; // Ajouter un espace supplémentaire au-dessus du titre "Poch'Lib"
+    }
+  }
+    .book-card {
+        flex-basis: calc(50% - 20px);  // Sur tablette, deux cartes par ligne
+    }
+  
+  
+  
+  /* Styles pour ordinateur */
+  @media only screen and (min-width: 1024px) {
+    body {
+      /* Modifier les styles du corps pour ordinateur */
+      #myBooks {
+        img[src="img/logo/logo.png"] {
+          width: 50px;
+        }
+      }
+    
+      .green-button {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+    
+      hr {
+        width: 8vw;
+      }
+    
+      #searchForm {
+        margin-bottom: 600px;
+      }
+    
+      #content {
+        margin-bottom: 100px;
+      }
+    
+      h2 {
+        font-size: 32px;
+      }
+    
+      .title {
+        font-size: 36px;
+      }
+    
+      .cancel-button {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+    
+      .search-button {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+    
+      .form-field {
+        label {
+          font-size: 16px;
+        }
+    
+        input[type="text"] {
+          padding: 5px;
+        }
+      }
+    
+      .book {
+        img {
+          width: 80px;
+          flex-basis: calc(33.33% - 20px); 
+        }
+      }
+    }
+  }
+
+// Styles communs à toutes les tailles d'écran
+
 html {
   font-family: 'Roboto', sans-serif;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100vh;
-  margin-top: 20px;
-}
-#myBooks {
-    img.logo {
-      width: 50px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin-top: 20px;
+  }
+  
+  #myBooks {
+    img[src="img/logo/logo.png"] {
+      width: 50px;
+      height: auto;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      max-width: 100%;
     }
   }
   
-.green-button {
-  background-color: $green-color;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-hr {
-  width: 8vw;
-  margin: 0 auto;
-}
-
-#searchForm {
-  display: none;
-  margin-top: 20px;
-  margin-bottom: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  input,
-  button {
-    margin-bottom: 10px;
+  
+  .green-button {
+    background-color: $green-color;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
   }
-}
-
-#content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-h2 {
-  text-align: center;
-}
-
-.title {
-  text-align: center;
-}
-
-.cancel-button {
-  background-color: #da5c4c;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.search-button {
-  background-color: #479488;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.form-field {
+  
+  hr {
+    width: 8vw;
+    margin: 0 auto;
+  }
+  
+  #searchForm {
+    display: none;
+    margin-top: 20px;
+    margin-bottom: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    input,
+    button {
+      margin-bottom: 10px;
+    }
+  }
+  
+  #content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .title {
+    text-align: center;
+  }
+  
+  .cancel-button {
+    background-color: #da5c4c;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .search-button {
+    background-color: #479488;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  
+    input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 15px; 
+    }
+  }
+  .form-field {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-
-  label {
-    margin-bottom: 5px;
-    font-weight: bold;
   }
-
   input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+    margin-top: 5px; 
 }
+
+  .book {
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
+  
+  .pochliste-book {
+    h4 {
+      font-size: 16px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  #resultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    width: 100%;  
+  }
+  .resultsItem {
+    flex-basis: calc(33.33% - 20px);  
+    margin: 10px;  
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    overflow: hidden;  
+    
+    
+  }
+  
+  .book-card {
+    flex-basis: calc(33.33% - 20px);  
+    margin: 10px;  
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    overflow: hidden;  
+    
+    img {
+      width: 100%; 
+    }
+  
+    h3, p, button {
+      padding: 10px;
+    }
+  }

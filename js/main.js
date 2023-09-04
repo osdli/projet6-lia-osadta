@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+   //
     // Création du bouton
     var addButton = document.createElement("button");
     addButton.textContent = "Ajouter un livre";
@@ -130,9 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Ajouter le conteneur de la poch'liste à l'élément "myBooks"
     myBooksContainer.appendChild(pochlisteContainer);
-  });
-  
 
-  
-  
+    displayBooksFromSession();
+  });
   
