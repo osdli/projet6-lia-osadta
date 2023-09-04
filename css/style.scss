@@ -15,7 +15,7 @@ $green-color: #479488;
     
     #myBooks {
       img[src="img/logo/logo.png"] {
-        width: 30px;
+        width: 60px;
         height: auto;
         position: absolute;
         top: 10px;
@@ -70,9 +70,9 @@ $green-color: #479488;
       }
     }
     
-    .book {
+    .book-card {
       img {
-        width: 100%;
+        flex-basis: 100%;
       }
     }
   }
@@ -97,8 +97,8 @@ $green-color: #479488;
     }
   
     #searchForm {
-      width: 80%; // Définir la largeur du formulaire à 80% de la largeur de la page
-      display: flex; // Afficher les éléments en tant que flexbox
+      width: 80%; 
+      display: flex; 
       justify-content: space-between; // Répartir l'espace disponible entre les boutons
       align-items: center; // Centrer les éléments verticalement
     }
@@ -113,9 +113,9 @@ $green-color: #479488;
     }
   
     #content {
-      width: 80%; // Définir la largeur du contenu à 80% de la largeur de la page
-      height: auto; // Ajuster la hauteur automatiquement
-      margin-bottom: 0; // Supprimer la marge inférieure
+      width: 80%; 
+      height: auto; 
+      margin-bottom: 0; 
     }
   
     h2,
@@ -134,6 +134,9 @@ $green-color: #479488;
       margin-top: 20px; // Ajouter un espace supplémentaire au-dessus du titre "Poch'Lib"
     }
   }
+    .book-card {
+        flex-basis: calc(50% - 20px);  // Sur tablette, deux cartes par ligne
+    }
   
   
   
@@ -195,6 +198,7 @@ $green-color: #479488;
       .book {
         img {
           width: 80px;
+          flex-basis: calc(33.33% - 20px); 
         }
       }
     }
@@ -301,13 +305,12 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-
+  }
   input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-top: 5px; /* Ajoutez cette ligne pour créer un espace entre le label et le champ de saisie */
-  }
+    margin-top: 5px; 
 }
 
   .book {
@@ -325,5 +328,38 @@ body {
     button {
       font-size: 14px;
       padding: 8px 16px;
+    }
+  }
+  #resultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    width: 100%;  
+  }
+  .resultsItem {
+    flex-basis: calc(33.33% - 20px);  
+    margin: 10px;  
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    overflow: hidden;  
+    
+    
+  }
+  
+  .book-card {
+    flex-basis: calc(33.33% - 20px);  
+    margin: 10px;  
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    overflow: hidden;  
+    
+    img {
+      width: 100%; 
+    }
+  
+    h3, p, button {
+      padding: 10px;
     }
   }
