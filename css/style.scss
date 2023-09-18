@@ -2,6 +2,13 @@
 
 $green-color: #479488;
 
+@mixin bookStyle {
+    width: 200px;
+    height: 300px;  
+}
+
+
+
 /* Styles pour mobile */
 @media only screen and (max-width: 767px) {
     body {
@@ -13,15 +20,12 @@ $green-color: #479488;
       margin-top: 20px;
     }
     
-    #myBooks {
-      img[src="img/logo/logo.png"] {
-        width: 60px;
-        height: auto;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        max-width: 100%;
-      }
+    @media only screen and (max-width: 767px) {
+        #myBooks {
+          img[src="img/logo/logo.png"] {
+            width: 60px; 
+          }
+        }
     }
     
     .green-button {
@@ -70,11 +74,18 @@ $green-color: #479488;
       }
     }
     
-    .book-card {
+   .book-card {
       img {
         flex-basis: 100%;
       }
     }
+
+    .resultsItem, .book-card {
+        @include bookStyle;
+        width: 150px; // taille adaptée pour les mobiles
+        height: 225px;
+    }
+
   }
   
   // Styles pour tablette
@@ -85,9 +96,11 @@ $green-color: #479488;
     }
   
     #myBooks {
-      width: 80%; // Définir la largeur à 80% de la largeur de la page
-      max-width: none; // Réinitialiser la valeur maximale de la largeur
-    }
+        img[src="img/logo/logo.png"] {
+          width: 80px; 
+        }
+      }
+  
   
     .green-button,
     hr,
@@ -101,7 +114,13 @@ $green-color: #479488;
       display: flex; 
       justify-content: space-between; // Répartir l'espace disponible entre les boutons
       align-items: center; // Centrer les éléments verticalement
+      label, input {
+        display: block; // les rend en bloc pour s'assurer qu'ils s'empilent verticalement
+        width: 100%;
+        margin-bottom: 10px;
     }
+    }
+  
   
     .form-field {
       flex-basis: 45%; // Définir la largeur des champs de texte à 45% de la largeur du formulaire
@@ -133,11 +152,19 @@ $green-color: #479488;
     .title {
       margin-top: 20px; // Ajouter un espace supplémentaire au-dessus du titre "Poch'Lib"
     }
-  }
+
     .book-card {
         flex-basis: calc(50% - 20px);  // Sur tablette, deux cartes par ligne
     }
-  
+
+    .resultsItem, .book-card {
+        @include bookStyle;
+        width: 175px; // taille adaptée pour les tablettes
+        height: 262.5px;
+    }
+
+  }
+    
   
   
   /* Styles pour ordinateur */
@@ -221,12 +248,7 @@ body {
   
   #myBooks {
     img[src="img/logo/logo.png"] {
-      width: 50px;
-      height: auto;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      max-width: 100%;
+      width: 100px; 
     }
   }
   
@@ -336,7 +358,8 @@ body {
     justify-content: space-between; 
     width: 100%;  
   }
-  .resultsItem {
+  .resultsItem, .book-card {
+    @include bookStyle;
     flex-basis: calc(33.33% - 20px);  
     margin: 10px;  
     border: 1px solid #ccc;
@@ -348,18 +371,42 @@ body {
   }
   
   .book-card {
-    flex-basis: calc(33.33% - 20px);  
-    margin: 10px;  
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
-    overflow: hidden;  
-    
-    img {
-      width: 100%; 
+    // Style général pour la card
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .book-info {
+      // Pour aligner le titre et les informations en haut à gauche
+      align-self: flex-start;
+      
+      .book-title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+  
+      .book-author,
+      .book-release {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
     }
   
-    h3, p, button {
-      padding: 10px;
+    .book-image-container {
+      // Centrer l'image
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+  
+      .book-image {
+        max-width: 100%;
+        height: auto;
+      }
     }
   }

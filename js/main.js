@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-   //
     // Création du bouton
     var addButton = document.createElement("button");
     addButton.textContent = "Ajouter un livre";
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var searchButton = document.createElement("button");
       searchButton.textContent = "Rechercher";
       searchButton.classList.add("search-button");
-  
+
       var cancelButton = document.createElement("button");
       cancelButton.textContent = "Annuler";
       cancelButton.classList.add("cancel-button");

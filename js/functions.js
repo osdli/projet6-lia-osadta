@@ -1,3 +1,21 @@
+// F onction displayBooks
+function displayBooks(books) {
+  let htmlString = '';
+  for(let book of books) {
+      htmlString += `
+      <div class="book-card">
+          <div class="book-info">
+              <h2 class="book-title">${book.title}</h2>
+              <p class="book-author">${book.author}</p>
+              <p class="book-release">${book.release}</p>
+          </div>
+          <div class="book-image-container">
+              <img class="book-image" src="${book.image}" alt="${book.title}">
+          </div>
+      </div>`;
+  }
+  document.querySelector('.books-container').innerHTML = htmlString;
+}
 // Fonction pour valider le formulaire de recherche
 function validateForm() {
   var bookTitleInput = document.getElementById("bookTitle");
@@ -80,11 +98,12 @@ function displayResults(response) {
                 addBookToPochliste(book);
             });
 
-            bookElement.appendChild(thumbnailElement);
+            bookElement.appendChild(bookmarkElement);
             bookElement.appendChild(titleElement);
             bookElement.appendChild(authorsElement);
             bookElement.appendChild(descriptionElement);
-            bookElement.appendChild(bookmarkElement);
+            bookElement.appendChild(thumbnailElement);
+            
 
             resultsContainer.appendChild(bookElement);
         }
@@ -92,6 +111,14 @@ function displayResults(response) {
 }
 
 function addBookToPochliste(book) {
+
+   // Vérifier si le livre est déjà présent dans la poch'liste
+   var existingBook = document.querySelector('.pochliste-book[data-book-id="' + book.id + '"]');
+   if (existingBook) {
+     alert("Vous ne pouvez ajouter deux fois le même livre.");
+     return;
+   }
+
   var pochlisteContainer = document.getElementById("pochlisteContainer");
   console.log("book log =",book);
   var bookData = {
@@ -115,12 +142,7 @@ function addBookToPochliste(book) {
     var titleElement = document.createElement("h4");
     titleElement.textContent = book.volumeInfo.title;
   
-    var removeButton = document.createElement("button");
-    removeButton.textContent = "Retirer";
-    removeButton.addEventListener("click", function() {
-      // Supprimer le livre de la poch'liste
-      bookElement.remove();
-    });
+   
   
     bookElement.appendChild(titleElement);
     bookElement.appendChild(removeButton);
