@@ -2,411 +2,253 @@
 
 $green-color: #479488;
 
-@mixin bookStyle {
-    width: 200px;
-    height: 300px;  
+@mixin bookStyle($width, $height) {
+    width: $width;
+    height: $height;  
 }
 
-
-
-/* Styles pour mobile */
-@media only screen and (max-width: 767px) {
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 100vh;
-      margin-top: 20px;
-    }
-    
-    @media only screen and (max-width: 767px) {
-        #myBooks {
-          img[src="img/logo/logo.png"] {
-            width: 60px; 
-          }
-        }
-    }
-    
-    .green-button {
-      font-size: 14px;
-      padding: 8px 16px;
-    }
-    
-    hr {
-      width: 12vw;
-    }
-    
-    #searchForm {
-      margin-bottom: 300px;
-    }
-    
-    #content {
-      margin-bottom: 100px;
-    }
-    
-    h2 {
-      font-size: 24px;
-    }
-    
-    .title {
-      margin-top: 10px;
-      font-size: 28px;
-    }
-    
-    .cancel-button {
-      font-size: 14px;
-      padding: 8px 16px;
-    }
-    
-    .search-button {
-      font-size: 14px;
-      padding: 8px 16px;
-    }
-    
-    .form-field {
-      label {
-        font-size: 14px;
-      }
-    
-      input[type="text"] {
-        padding: 3px;
-      }
-    }
-    
-   .book-card {
-      img {
-        flex-basis: 100%;
-      }
-    }
-
-    .resultsItem, .book-card {
-        @include bookStyle;
-        width: 150px; // taille adaptée pour les mobiles
-        height: 225px;
-    }
-
-  }
-  
-  // Styles pour tablette
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-    body {
-      justify-content: center; // Centrer les éléments horizontalement
-      align-items: center; // Centrer les éléments verticalement
-    }
-  
-    #myBooks {
-        img[src="img/logo/logo.png"] {
-          width: 80px; 
-        }
-      }
-  
-  
-    .green-button,
-    hr,
-    .cancel-button,
-    .search-button {
-      width: 80%; // Définir la largeur des boutons et de la ligne à 80% de la largeur de la page
-    }
-  
-    #searchForm {
-      width: 80%; 
-      display: flex; 
-      justify-content: space-between; // Répartir l'espace disponible entre les boutons
-      align-items: center; // Centrer les éléments verticalement
-      label, input {
-        display: block; // les rend en bloc pour s'assurer qu'ils s'empilent verticalement
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    }
-  
-  
-    .form-field {
-      flex-basis: 45%; // Définir la largeur des champs de texte à 45% de la largeur du formulaire
-    }
-  
-    .search-button,
-    .cancel-button {
-      flex-basis: 45%; // Définir la largeur des boutons à 45% de la largeur du formulaire
-    }
-  
-    #content {
-      width: 80%; 
-      height: auto; 
-      margin-bottom: 0; 
-    }
-  
-    h2,
-    .title {
-      font-size: 24px; // Ajuster la taille de la police
-      text-align: center; // Centrer le texte horizontalement
-    }
-  
-    .form-field {
-      input[type="text"] {
-        padding: 8px; // Ajuster le rembourrage du champ de texte
-      }
-    }
-  
-    .title {
-      margin-top: 20px; // Ajouter un espace supplémentaire au-dessus du titre "Poch'Lib"
-    }
-
-    .book-card {
-        flex-basis: calc(50% - 20px);  // Sur tablette, deux cartes par ligne
-    }
-
-    .resultsItem, .book-card {
-        @include bookStyle;
-        width: 175px; // taille adaptée pour les tablettes
-        height: 262.5px;
-    }
-
-  }
-    
-  
-  
-  /* Styles pour ordinateur */
-  @media only screen and (min-width: 1024px) {
-    body {
-      /* Modifier les styles du corps pour ordinateur */
-      #myBooks {
-        img[src="img/logo/logo.png"] {
-          width: 50px;
-        }
-      }
-    
-      .green-button {
-        font-size: 16px;
-        padding: 10px 20px;
-      }
-    
-      hr {
-        width: 8vw;
-      }
-    
-      #searchForm {
-        margin-bottom: 600px;
-      }
-    
-      #content {
-        margin-bottom: 100px;
-      }
-    
-      h2 {
-        font-size: 32px;
-      }
-    
-      .title {
-        font-size: 36px;
-      }
-    
-      .cancel-button {
-        font-size: 16px;
-        padding: 10px 20px;
-      }
-    
-      .search-button {
-        font-size: 16px;
-        padding: 10px 20px;
-      }
-    
-      .form-field {
-        label {
-          font-size: 16px;
-        }
-    
-        input[type="text"] {
-          padding: 5px;
-        }
-      }
-    
-      .book {
-        img {
-          width: 80px;
-          flex-basis: calc(33.33% - 20px); 
-        }
-      }
-    }
-  }
-
 // Styles communs à toutes les tailles d'écran
-
-html {
-  font-family: 'Roboto', sans-serif;
+html, body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
     min-height: 100vh;
     margin-top: 20px;
-  }
-  
-  #myBooks {
-    img[src="img/logo/logo.png"] {
-      width: 100px; 
+}
+
+#myBooks {
+    img[
+        src="img/logo/logo.png"] {
+        width: 100px; 
+        display: block;  
+        margin: 0 auto;
     }
-  }
-  
-  
-  .green-button {
-    background-color: $green-color;
-    color: white;
+}
+
+.green-button,
+.cancel-button,
+.search-button {
+    border-radius: 5px;
     font-size: 16px;
     padding: 10px 20px;
-    border-radius: 5px;
-  }
-  
-  hr {
-    width: 8vw;
+    color: white;
+}
+
+.btn-special {
+    width: 33%;  
+    height: 33%; 
+    
+}
+
+.green-button {
+    background-color: $green-color;
+}
+
+.cancel-button {
+    background-color: #da5c4c;
+}
+
+.search-button {
+    background-color: #479488;
+}
+
+
+hr, .title {
+    border-radius: 10px; 
+}
+
+hr {
+    //width: 8vw;
+    width: 80%;
     margin: 0 auto;
-  }
-  
-  #searchForm {
-    display: none;
+    
+}
+
+.title {
+    border-radius: 3px;
+    background: lightgrey;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#searchForm {
+    display: block;
+    width: 80%;
     margin-top: 20px;
-    margin-bottom: 600px;
-    display: flex;
+    margin: 0 auto; 
     flex-direction: column;
     align-items: center;
-  
-    input,
-    button {
-      margin-bottom: 10px;
+    & > * { // cible tous les éléments directs à l'intérieur de #searchForm
+        width: 100%; // les rend aussi larges que possible à l'intérieur de #searchForm
     }
-  }
-  
-  #content {
+    input, button {
+        margin-bottom: 10px;
+        width: 100%; 
+        height: 100%;
+        padding: 10px;
+    }
+    button {
+        margin-bottom: 10px;
+        width: 30%; 
+        height: auto; 
+        padding: 5px 10px; 
+    }
+}
+
+#content {
+    min-height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  h2 {
+}
+
+
+
+h2,
+.title {
     text-align: center;
-  }
-  
-  .title {
-    text-align: center;
-  }
-  
-  .cancel-button {
-    background-color: #da5c4c;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-  }
-  
-  .search-button {
-    background-color: #479488;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-  }
-  
-  .form-field {
+    
+}
+
+
+.form-field {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-  
     input[type="text"] {
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-top: 15px; 
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 5px; 
     }
-  }
-  .form-field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  }
-  input[type="text"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 5px; 
 }
 
-  .book {
-    img {
-      width: 50px;
-      height: auto;
-    }
-  }
-  
-  .pochliste-book {
-    h4 {
-      font-size: 16px;
-    }
-  
-    button {
-      font-size: 14px;
-      padding: 8px 16px;
-    }
-  }
-  #resultsContainer {
+.book img {
+    width: 50px;
+    height: auto;
+}
+
+
+#resultsContainer, #pochlisteContainer {
+    margin-top: 10px; 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; 
+    justify-content: space-evenly; 
     width: 100%;  
-  }
-  .resultsItem, .book-card {
-    @include bookStyle;
-    flex-basis: calc(33.33% - 20px);  
-    margin: 10px;  
+}
+
+// Style pour les images des livres
+.book-thumbnail, .img {
+    width: 50px;
+    height: auto;
+}
+
+ .book-card  {
+    position: relative;
+    flex-basis: calc(33.33% - 20px);
+    margin: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
-    overflow: hidden;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 10px;
+    min-height: 380px; // Augmentation de la hauteur pour plus d'espace
+
+    .bookmark-button, .fas.fa-trash {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.7); // Pour assurer la visibilité
+        border: none;
+        cursor: pointer;
+    }
     
-    
-  }
-  
-  .book-card {
-    // Style général pour la card
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  
+    .fas.fa-trash {
+        right: 40px;  // Pour décaler l'icône de la poubelle à gauche de l'icône de bookmark
+    }
+
     .book-info {
-      // Pour aligner le titre et les informations en haut à gauche
-      align-self: flex-start;
-      
-      .book-title {
-        font-weight: bold;
-        font-size: 20px;
         margin-bottom: 5px;
-      }
-  
-      .book-author,
-      .book-release {
-        font-size: 16px;
-        margin-bottom: 5px;
-      }
+        font-size: 0.9rem;
+
+        & > * {
+            margin-bottom: 5px;
+        }
     }
-  
+
     .book-image-container {
-      // Centrer l'image
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      width: 100%;
-  
-      .book-image {
-        max-width: 100%;
-        height: auto;
-      }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 230px; 
+
+        .book-image {
+            max-width: 100%; 
+            height: auto;
+            max-height: 100%; 
+            object-fit: contain; 
+        }
+       
     }
-  }
+}
+
+    
+// Styles pour mobile
+@media only screen and (max-width: 767px) {
+    body {
+        margin-top: 10px; 
+     }
+
+
+     h2, .title {
+        font-size: 24px; 
+     }
+
+     .form-field input[type="text"] {
+        padding: 10px; 
+     }
+}
+
+     .book-card {
+        //@include bookStyle(150px, 225px);
+        flex-basis: 100%;  
+    }
+    #searchForm button {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+
+// Styles pour tablette
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        margin-top: 15px; 
+     }
+
+     h2, .title {
+        font-size: 28px; 
+     }
+
+     .book-card {
+        //@include bookStyle(175px, 262.5px);
+        flex-basis: calc(30% - 20px); 
+    }
+}
+
+// Styles pour ordinateur
+@media only screen and (min-width: 1024px) {
+     .book-card {
+        //@include bookStyle(250px, 350px);
+        flex-basis: calc(15% - 20px);  
+    }
+}
+

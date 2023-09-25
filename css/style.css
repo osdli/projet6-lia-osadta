@@ -1,241 +1,102 @@
 @import url("https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Lato:wght@300;400&family=Lobster&family=Open+Sans:wght@300;400;700&family=Roboto+Slab:wght@300;400&family=Roboto:wght@300;400&display=swap");
-/* Styles pour mobile */
-@media only screen and (max-width: 767px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-    margin-top: 20px;
-  }
-}
-@media only screen and (max-width: 767px) and (max-width: 767px) {
-  #myBooks img[src="img/logo/logo.png"] {
-    width: 60px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .green-button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  hr {
-    width: 12vw;
-  }
-  #searchForm {
-    margin-bottom: 300px;
-  }
-  #content {
-    margin-bottom: 100px;
-  }
-  h2 {
-    font-size: 24px;
-  }
-  .title {
-    margin-top: 10px;
-    font-size: 28px;
-  }
-  .cancel-button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  .search-button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  .form-field label {
-    font-size: 14px;
-  }
-  .form-field input[type=text] {
-    padding: 3px;
-  }
-  .book-card img {
-    flex-basis: 100%;
-  }
-  .resultsItem, .book-card {
-    width: 200px;
-    height: 300px;
-    width: 150px;
-    height: 225px;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  body {
-    justify-content: center;
-    align-items: center;
-  }
-  #myBooks img[src="img/logo/logo.png"] {
-    width: 80px;
-  }
-  .green-button,
-  hr,
-  .cancel-button,
-  .search-button {
-    width: 80%;
-  }
-  #searchForm {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #searchForm label, #searchForm input {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  .form-field {
-    flex-basis: 45%;
-  }
-  .search-button,
-  .cancel-button {
-    flex-basis: 45%;
-  }
-  #content {
-    width: 80%;
-    height: auto;
-    margin-bottom: 0;
-  }
-  h2,
-  .title {
-    font-size: 24px;
-    text-align: center;
-  }
-  .form-field input[type=text] {
-    padding: 8px;
-  }
-  .title {
-    margin-top: 20px;
-  }
-  .book-card {
-    flex-basis: calc(50% - 20px);
-  }
-  .resultsItem, .book-card {
-    width: 200px;
-    height: 300px;
-    width: 175px;
-    height: 262.5px;
-  }
-}
-/* Styles pour ordinateur */
-@media only screen and (min-width: 1024px) {
-  body {
-    /* Modifier les styles du corps pour ordinateur */
-  }
-  body #myBooks img[src="img/logo/logo.png"] {
-    width: 50px;
-  }
-  body .green-button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-  body hr {
-    width: 8vw;
-  }
-  body #searchForm {
-    margin-bottom: 600px;
-  }
-  body #content {
-    margin-bottom: 100px;
-  }
-  body h2 {
-    font-size: 32px;
-  }
-  body .title {
-    font-size: 36px;
-  }
-  body .cancel-button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-  body .search-button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-  body .form-field label {
-    font-size: 16px;
-  }
-  body .form-field input[type=text] {
-    padding: 5px;
-  }
-  body .book img {
-    width: 80px;
-    flex-basis: calc(33.33% - 20px);
-  }
-}
-html {
+html, body {
   font-family: "Roboto", sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
   min-height: 100vh;
   margin-top: 20px;
 }
 
 #myBooks img[src="img/logo/logo.png"] {
   width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.green-button,
+.cancel-button,
+.search-button {
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: white;
+}
+
+.btn-special {
+  width: 33%;
+  height: 33%;
 }
 
 .green-button {
   background-color: #479488;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
+}
+
+.cancel-button {
+  background-color: #da5c4c;
+}
+
+.search-button {
+  background-color: #479488;
+}
+
+hr, .title {
+  border-radius: 10px;
 }
 
 hr {
-  width: 8vw;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.title {
+  border-radius: 3px;
+  background: lightgrey;
+  width: 80%;
   margin: 0 auto;
 }
 
 #searchForm {
-  display: none;
+  display: block;
+  width: 80%;
   margin-top: 20px;
-  margin-bottom: 600px;
-  display: flex;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
 }
-#searchForm input,
+#searchForm > * {
+  width: 100%;
+}
+#searchForm input, #searchForm button {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
 #searchForm button {
   margin-bottom: 10px;
+  width: 30%;
+  height: auto;
+  padding: 5px 10px;
 }
 
 #content {
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-h2 {
-  text-align: center;
-}
-
+h2,
 .title {
   text-align: center;
-}
-
-.cancel-button {
-  background-color: #da5c4c;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.search-button {
-  background-color: #479488;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
 }
 
 .form-field {
@@ -247,19 +108,6 @@ h2 {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-top: 15px;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-input[type=text] {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   margin-top: 5px;
 }
 
@@ -268,63 +116,97 @@ input[type=text] {
   height: auto;
 }
 
-.pochliste-book h4 {
-  font-size: 16px;
-}
-.pochliste-book button {
-  font-size: 14px;
-  padding: 8px 16px;
-}
-
-#resultsContainer {
+#resultsContainer, #pochlisteContainer {
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
 }
 
-.resultsItem, .book-card {
-  width: 200px;
-  height: 300px;
+.book-thumbnail, .img {
+  width: 50px;
+  height: auto;
+}
+
+.book-card {
+  position: relative;
   flex-basis: calc(33.33% - 20px);
   margin: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  padding: 10px;
+  min-height: 380px;
 }
-
-.book-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.book-card .bookmark-button, .book-card .fas.fa-trash {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+}
+.book-card .fas.fa-trash {
+  right: 40px;
 }
 .book-card .book-info {
-  align-self: flex-start;
-}
-.book-card .book-info .book-title {
-  font-weight: bold;
-  font-size: 20px;
   margin-bottom: 5px;
+  font-size: 0.9rem;
 }
-.book-card .book-info .book-author,
-.book-card .book-info .book-release {
-  font-size: 16px;
+.book-card .book-info > * {
   margin-bottom: 5px;
 }
 .book-card .book-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
   width: 100%;
+  height: 230px;
 }
 .book-card .book-image-container .book-image {
   max-width: 100%;
   height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 767px) {
+  body {
+    margin-top: 10px;
+  }
+  h2, .title {
+    font-size: 24px;
+  }
+  .form-field input[type=text] {
+    padding: 10px;
+  }
+}
+.book-card {
+  flex-basis: 100%;
+}
+
+#searchForm button {
+  display: block;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    margin-top: 15px;
+  }
+  h2, .title {
+    font-size: 28px;
+  }
+  .book-card {
+    flex-basis: calc(30% - 20px);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .book-card {
+    flex-basis: calc(15% - 20px);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

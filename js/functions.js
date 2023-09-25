@@ -1,21 +1,3 @@
-// F onction displayBooks
-function displayBooks(books) {
-  let htmlString = '';
-  for(let book of books) {
-      htmlString += `
-      <div class="book-card">
-          <div class="book-info">
-              <h2 class="book-title">${book.title}</h2>
-              <p class="book-author">${book.author}</p>
-              <p class="book-release">${book.release}</p>
-          </div>
-          <div class="book-image-container">
-              <img class="book-image" src="${book.image}" alt="${book.title}">
-          </div>
-      </div>`;
-  }
-  document.querySelector('.books-container').innerHTML = htmlString;
-}
 // Fonction pour valider le formulaire de recherche
 function validateForm() {
   var bookTitleInput = document.getElementById("bookTitle");
@@ -118,8 +100,8 @@ function addBookToPochliste(book) {
      alert("Vous ne pouvez ajouter deux fois le même livre.");
      return;
    }
-
-  var pochlisteContainer = document.getElementById("pochlisteContainer");
+  console.log("mon book existe ",existingBook);
+ // var pochlisteContainer = document.getElementById("pochlisteContainer");
   console.log("book log =",book);
   var bookData = {
     bookId: book.id,
@@ -133,22 +115,6 @@ function addBookToPochliste(book) {
   addBookToSession(bookData);
   displayBooksFromSession();  // Mettre à jour l'affichage
 
-  
-    // Créer l'élément représentant le livre dans la poch'liste
-    var bookElement = document.createElement("div");
-    bookElement.classList.add("pochliste-book");
-    bookElement.setAttribute("data-book-id", book.id);
-  
-    var titleElement = document.createElement("h4");
-    titleElement.textContent = book.volumeInfo.title;
-  
-   
-  
-    bookElement.appendChild(titleElement);
-    bookElement.appendChild(removeButton);
-  
-    // Ajouter le livre à la poch'liste
-    pochlisteContainer.appendChild(bookElement);
 
     // Ajouter le livre aux favoris en créant dynamiquement l'élément dans le corps de la page
    var favoritesContainer = document.getElementById("favoritesContainer");
@@ -158,9 +124,6 @@ function addBookToPochliste(book) {
     document.body.appendChild(favoritesContainer);
   }
 
-  var favoriteBookElement = document.createElement("div");
-  favoriteBookElement.textContent = book.volumeInfo.title;  // Utilisation de book.volumeInfo.title au lieu de bookTitle
-  favoritesContainer.appendChild(favoriteBookElement);
 }
 
 
@@ -195,37 +158,38 @@ function displayBooksFromSession() {
   pochlisteContainer.innerHTML = "";
 
   pochliste.forEach(function(book) {
-    var bookElement = document.createElement("div");
-    bookElement.classList.add("pochliste-book");
-    bookElement.setAttribute("data-book-id", book.bookId);
+      var bookElement = document.createElement("div");
+      bookElement.classList.add("book-card");   // Utilisation de "book-card" pour uniformiser le style
 
-    var thumbnailElement = document.createElement("img");
-    thumbnailElement.src = book.thumbnail;
-    thumbnailElement.classList.add("book-thumbnail");
+      var thumbnailElement = document.createElement("img");
+      thumbnailElement.src = book.thumbnail;
+      thumbnailElement.classList.add("book-thumbnail");
 
-    var titleElement = document.createElement("h4");
-    titleElement.textContent = book.bookTitle;
+      var titleElement = document.createElement("h4");
+      titleElement.textContent = book.bookTitle;
 
-    var authorsElement = document.createElement("p");
-    authorsElement.textContent = "Auteur(s): " + book.authors;
-    authorsElement.classList.add("book-authors");
+      var authorsElement = document.createElement("p");
+      authorsElement.textContent = "Auteur(s): " + book.authors;
+      authorsElement.classList.add("book-authors");
 
-    var descriptionElement = document.createElement("p");
-    descriptionElement.textContent = book.description;
-    descriptionElement.classList.add("book-description");
+      var descriptionElement = document.createElement("p");
+      descriptionElement.textContent = book.description;
+      descriptionElement.classList.add("book-description");
 
-    var removeButton = document.createElement("button");
-    removeButton.innerHTML = '<i class="fas fa-trash"></i>';
-    removeButton.addEventListener("click", function() {
-      removeBookFromSession(book.bookId);
-    });
+      var removeButton = document.createElement("button");
+      removeButton.innerHTML = '<i class="fas fa-trash"></i>';
+      removeButton.addEventListener("click", function() {
+          removeBookFromSession(book.bookId);
+      });
 
-    bookElement.appendChild(thumbnailElement);
-    bookElement.appendChild(titleElement);
-    bookElement.appendChild(authorsElement);
-    bookElement.appendChild(descriptionElement);
-    bookElement.appendChild(removeButton);
+      bookElement.appendChild(thumbnailElement);
+      bookElement.appendChild(titleElement);
+      bookElement.appendChild(authorsElement);
+      bookElement.appendChild(descriptionElement);
+      bookElement.appendChild(removeButton);
 
-    pochlisteContainer.appendChild(bookElement);
+      pochlisteContainer.appendChild(bookElement);
   });
 }
+
+

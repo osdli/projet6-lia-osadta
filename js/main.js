@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
+    let searchButton = document.querySelector('button[type="submit"]');
+    if (searchButton && !searchButton.classList.contains('btn-special')) {
+        searchButton.classList.add('btn-special');
+    }
+
+    let cancelButton = document.querySelector('button[type="reset"]');
+    if (cancelButton && !cancelButton.classList.contains('btn-special')) {
+        cancelButton.classList.add('btn-special');
+    }
 
     // Création du bouton
     var addButton = document.createElement("button");
@@ -37,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var cancelButton = document.createElement("button");
       cancelButton.textContent = "Annuler";
       cancelButton.classList.add("cancel-button");
+
+
   
       searchForm.appendChild(labelTitle);
       searchForm.appendChild(inputTitle);
@@ -122,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Appliquer des styles au bouton "Ajouter un livre"
     addButton.style.marginTop = "20px"; // Ajouter une marge supérieure
 
-        // Récupération de l'élément "myBooks"
+    // Récupération de l'élément "myBooks"
     var myBooksContainer = document.getElementById("myBooks");
 
     // Création du conteneur pour la poch'liste
@@ -133,5 +144,8 @@ document.addEventListener("DOMContentLoaded", function() {
     myBooksContainer.appendChild(pochlisteContainer);
 
     displayBooksFromSession();
+    
+
+    
   });
   
