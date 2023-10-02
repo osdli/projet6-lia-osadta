@@ -130,7 +130,10 @@ h2,
 }
 
 .book-card {
+  display: flex;
+  flex-direction: column;
   position: relative;
+  justify-content: space-between;
   flex-basis: calc(33.33% - 20px);
   margin: 10px;
   border: 1px solid #ccc;
@@ -140,7 +143,36 @@ h2,
   padding: 10px;
   min-height: 380px;
 }
-.book-card .bookmark-button, .book-card .fas.fa-trash {
+.book-card .book-title, .book-card h4, .book-card .book-id {
+  font-weight: bold;
+}
+.book-card .bookmark-button, .book-card .delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.book-card .book-thumbnail {
+  margin: 0 auto;
+  margin-top: auto;
+  margin-bottom: 10px;
+  order: 5;
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+}
+.book-card h3, .book-card h4 {
+  order: 1;
+}
+.book-card .book-id {
+  order: 2;
+}
+.book-card .book-authors {
+  order: 3;
+}
+.book-card .book-description {
+  order: 4;
+}
+.book-card .bookmark-button, .book-card .delete-button {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -149,7 +181,7 @@ h2,
   cursor: pointer;
 }
 .book-card .fas.fa-trash {
-  right: 40px;
+  right: 10px;
 }
 .book-card .book-info {
   margin-bottom: 5px;
@@ -170,6 +202,9 @@ h2,
   height: auto;
   max-height: 100%;
   object-fit: contain;
+}
+.book-card .book-image-container .book-thumbnail {
+  order: 1;
 }
 
 @media only screen and (max-width: 767px) {
