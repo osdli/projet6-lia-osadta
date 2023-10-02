@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     addButton.textContent = "Ajouter un livre";
     addButton.classList.add("green-button");
     addButton.addEventListener("click", function() {
-      // Code à exécuter lorsque le bouton est cliqué
-      console.log("Le bouton a été cliqué !");
+      
       // Ajouter un livre à la liste
   
       var searchForm = document.createElement("div");
@@ -62,15 +61,13 @@ document.addEventListener("DOMContentLoaded", function() {
       // Écouter l'événement "click" du bouton de recherche
       searchButton.addEventListener("click", function(event) {
         event.preventDefault(); // Empêche le comportement par défaut du bouton
-        console.log("ClickBeforevalidateForm");
         try {
             if (validateForm()) {
-                console.log("ClickVF");
+                
               var bookTitle = document.getElementById("bookTitle").value;
               var author = document.getElementById("author").value;
       
               // Effectuer la recherche avec l'API de Google Books
-              console.log("ClickSerachBook");
               searchBooks(bookTitle, author);
             }
          
