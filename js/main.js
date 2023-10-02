@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (cancelButton && !cancelButton.classList.contains('btn-special')) {
         cancelButton.classList.add('btn-special');
     }
-
     // Création du bouton
     var addButton = document.createElement("button");
     addButton.textContent = "Ajouter un livre";
@@ -46,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
       var cancelButton = document.createElement("button");
       cancelButton.textContent = "Annuler";
       cancelButton.classList.add("cancel-button");
-
 
   
       searchForm.appendChild(labelTitle);
@@ -144,8 +142,6 @@ document.addEventListener("DOMContentLoaded", function() {
     myBooksContainer.appendChild(pochlisteContainer);
 
     displayBooksFromSession();
-    
-
-    
+     
   });
   

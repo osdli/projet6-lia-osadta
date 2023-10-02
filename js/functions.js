@@ -9,7 +9,6 @@ function validateForm() {
   }
   return true;
 }
-
   // Fonction pour rechercher les livres avec l'API de Google Books
 function searchBooks(title, author) {
   var apiUrl = "https://www.googleapis.com/books/v1/volumes?q=";
@@ -94,25 +93,36 @@ function displayResults(response) {
 
 function addBookToPochliste(book) {
 
-   // Vérifier si le livre est déjà présent dans la poch'liste
-   var existingBook = document.querySelector('.pochliste-book[data-book-id="' + book.id + '"]');
-   if (existingBook) {
-     alert("Vous ne pouvez ajouter deux fois le même livre.");
-     return;
-   }
-  console.log("mon book existe ",existingBook);
- // var pochlisteContainer = document.getElementById("pochlisteContainer");
-  console.log("book log =",book);
-  var bookData = {
+  // Récupérer la poch'liste depuis la sessionStorage
+  var sessionData = sessionStorage.getItem("pochliste");
+  var pochliste = sessionData ? JSON.parse(sessionData) : [];
+
+  console.log("ID du livre à ajouter:", book.id);
+  console.log("Poch'liste actuelle:", pochliste);
+  
+  // Vérifier si le livre est déjà présent dans la poch'liste
+  for(var i = 0; i < pochliste.length; i++) {
+    console.log("Comparaison de l'ID:", pochliste[i].bookId, book.id);
+    if(pochliste[i].bookId === book.id) {
+      alert("Vous ne pouvez ajouter deux fois le même livre.");
+      return;
+    }
+  }
+
+  // Ajouter le livre à la poch'liste
+  pochliste.push({
     bookId: book.id,
     bookTitle: book.volumeInfo.title,
-    // Ajouts supplémentaires pour les autres informations
     authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Auteur inconnu",
     description: book.volumeInfo.description ? book.volumeInfo.description.substring(0, 200) : "Information manquante",
     thumbnail: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "img/unavailable.png"
-  };
+  });
 
-  addBookToSession(bookData);
+  // Mettre à jour la sessionStorage
+  sessionStorage.setItem("pochliste", JSON.stringify(pochliste));
+ 
+  console.log("book log =",book);
+  
   displayBooksFromSession();  // Mettre à jour l'affichage
 
 
@@ -125,7 +135,6 @@ function addBookToPochliste(book) {
   }
 
 }
-
 
   // Fonction pour ajouter le livre à la session
 function addBookToSession(book) {
