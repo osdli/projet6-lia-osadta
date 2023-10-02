@@ -10,30 +10,22 @@ function validateForm() {
   return true;
 }
 // Fonction pour rechercher les livres avec l'API de Google Books
-function searchBooks(title, author) {
-  var apiUrl = "https://www.googleapis.com/books/v1/volumes?q=";
+async function searchBooks(title, author) {
+  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${title ? `intitle:${title}` : ''}${author ? `+inauthor:${author}` : ''}`;
   
-  if (title) {
-    apiUrl += "intitle:" + title;
+  try {
+      const response = await fetch(apiUrl);
+      if (response.ok) {
+          const data = await response.json();
+          displayResults(data);
+      } else {
+          throw new Error("Erreur lors de la recherche.");
+      }
+  } catch (error) {
+      alert(error.message);
   }
-  
-  if (author) {
-    apiUrl += "+inauthor:" + author;
-  }
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", apiUrl, true);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var response = JSON.parse(xhr.responseText);
-      displayResults(response);
-    } else if (xhr.readyState === 4) {
-      alert("Une erreur s'est produite lors de la recherche. Veuillez réessayer.");
-    }
-  };
-  xhr.send();
 }
-  
+ 
 function displayResults(response) {
   var resultsContainer = document.getElementById("resultsContainer");
   resultsContainer.innerHTML = "";
