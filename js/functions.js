@@ -102,12 +102,8 @@ function addBookToPochliste(book) {
   var sessionData = sessionStorage.getItem("pochliste");
   var pochliste = sessionData ? JSON.parse(sessionData) : [];
 
-  console.log("ID du livre à ajouter:", book.id);
-  console.log("Poch'liste actuelle:", pochliste);
-  
   // Vérifier si le livre est déjà présent dans la poch'liste
   for(var i = 0; i < pochliste.length; i++) {
-    console.log("Comparaison de l'ID:", pochliste[i].bookId, book.id);
     if(pochliste[i].bookId === book.id) {
       alert("Vous ne pouvez ajouter deux fois le même livre.");
       return;
@@ -126,8 +122,6 @@ function addBookToPochliste(book) {
   // Mettre à jour la sessionStorage
   sessionStorage.setItem("pochliste", JSON.stringify(pochliste));
  
-  console.log("book log =",book);
-  
   displayBooksFromSession();  
 
 }
