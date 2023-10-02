@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    
     let searchButton = document.querySelector('button[type="submit"]');
     if (searchButton && !searchButton.classList.contains('btn-special')) {
         searchButton.classList.add('btn-special');

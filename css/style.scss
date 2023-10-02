@@ -7,6 +7,7 @@ $green-color: #479488;
     height: $height;  
 }
 
+
 // Styles communs à toutes les tailles d'écran
 html, body {
     font-family: 'Roboto', sans-serif;
@@ -65,7 +66,6 @@ hr, .title {
 }
 
 hr {
-    //width: 8vw;
     width: 80%;
     margin: 0 auto;
     
@@ -110,14 +110,11 @@ hr {
     justify-content: center;
 }
 
-
-
 h2,
 .title {
     text-align: center;
     
 }
-
 
 .form-field {
     display: flex;
@@ -136,7 +133,6 @@ h2,
     height: auto;
 }
 
-
 #resultsContainer, #pochlisteContainer {
     margin-top: 10px; 
     display: flex;
@@ -152,7 +148,10 @@ h2,
 }
 
  .book-card  {
+    display: flex;
+    flex-direction: column;
     position: relative;
+    justify-content: space-between;
     flex-basis: calc(33.33% - 20px);
     margin: 10px;
     border: 1px solid #ccc;
@@ -160,19 +159,55 @@ h2,
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 10px;
-    min-height: 380px; // Augmentation de la hauteur pour plus d'espace
+    min-height: 380px; 
 
-    .bookmark-button, .fas.fa-trash {
+    .book-title, h4, .book-id {
+        font-weight: bold;
+    }
+
+    .bookmark-button, .delete-button {
+        position: absolute; 
+        top: 10px; 
+        right: 10px; 
+    }
+
+    .book-thumbnail {
+        margin: 0 auto;      
+        margin-top: auto;
+        margin-bottom: 10px; 
+        order: 5;
+        width: 100px;      
+        height: 150px;     
+        object-fit: cover;
+    }
+
+    h3, h4 {
+        order: 1;
+    }
+
+    .book-id {
+        order: 2;
+    }
+
+    .book-authors {
+        order: 3;
+    }
+
+    .book-description {
+        order: 4;
+    }
+
+    .bookmark-button, .delete-button {
         position: absolute;
         top: 10px;
         right: 10px;
-        background-color: rgba(255, 255, 255, 0.7); // Pour assurer la visibilité
+        background-color: rgba(255, 255, 255, 0.7); 
         border: none;
         cursor: pointer;
     }
     
     .fas.fa-trash {
-        right: 40px;  // Pour décaler l'icône de la poubelle à gauche de l'icône de bookmark
+        right: 10px;  
     }
 
     .book-info {
@@ -197,10 +232,12 @@ h2,
             max-height: 100%; 
             object-fit: contain; 
         }
+        .book-thumbnail {
+            order: 1;
+        }
        
     }
 }
-
     
 // Styles pour mobile
 @media only screen and (max-width: 767px) {
@@ -227,7 +264,6 @@ h2,
         margin-bottom: 10px;
     }
 
-
 // Styles pour tablette
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
     body {
@@ -239,7 +275,6 @@ h2,
      }
 
      .book-card {
-        //@include bookStyle(175px, 262.5px);
         flex-basis: calc(30% - 20px); 
     }
 }
@@ -247,7 +282,6 @@ h2,
 // Styles pour ordinateur
 @media only screen and (min-width: 1024px) {
      .book-card {
-        //@include bookStyle(250px, 350px);
         flex-basis: calc(15% - 20px);  
     }
 }

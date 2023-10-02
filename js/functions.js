@@ -9,7 +9,7 @@ function validateForm() {
   }
   return true;
 }
-  // Fonction pour rechercher les livres avec l'API de Google Books
+// Fonction pour rechercher les livres avec l'API de Google Books
 function searchBooks(title, author) {
   var apiUrl = "https://www.googleapis.com/books/v1/volumes?q=";
   
@@ -72,6 +72,10 @@ function displayResults(response) {
             descriptionElement.textContent = book.volumeInfo.description ? book.volumeInfo.description.substring(0, 200) : "Information manquante";
             descriptionElement.classList.add("book-description");
 
+            var idElement = document.createElement("p");
+            idElement.textContent = "Id : " + book.id;
+            idElement.classList.add("book-id");
+
             var bookmarkElement = document.createElement("button");
             bookmarkElement.classList.add("bookmark-button");
             bookmarkElement.innerHTML = '<i class="fas fa-bookmark"></i>';
@@ -81,6 +85,7 @@ function displayResults(response) {
 
             bookElement.appendChild(bookmarkElement);
             bookElement.appendChild(titleElement);
+            bookElement.appendChild(idElement);
             bookElement.appendChild(authorsElement);
             bookElement.appendChild(descriptionElement);
             bookElement.appendChild(thumbnailElement);
@@ -123,16 +128,7 @@ function addBookToPochliste(book) {
  
   console.log("book log =",book);
   
-  displayBooksFromSession();  // Mettre à jour l'affichage
-
-
-    // Ajouter le livre aux favoris en créant dynamiquement l'élément dans le corps de la page
-   var favoritesContainer = document.getElementById("favoritesContainer");
-  if (!favoritesContainer) {
-    favoritesContainer = document.createElement("div");
-    favoritesContainer.id = "favoritesContainer";
-    document.body.appendChild(favoritesContainer);
-  }
+  displayBooksFromSession();  
 
 }
 
@@ -155,10 +151,9 @@ function removeBookFromSession(bookId) {
   });
 
   sessionStorage.setItem("pochliste", JSON.stringify(updatedPochliste));
-  displayBooksFromSession();  // Mettre à jour l'affichage
+  displayBooksFromSession();  
 }
-
-  
+ 
 // Fonction pour afficher les livres depuis la session
 function displayBooksFromSession() {
   var sessionData = sessionStorage.getItem("pochliste");
@@ -185,7 +180,12 @@ function displayBooksFromSession() {
       descriptionElement.textContent = book.description;
       descriptionElement.classList.add("book-description");
 
+      var idElement = document.createElement("p");
+        idElement.textContent = "Id : " + book.bookId;
+        idElement.classList.add("book-id");
+
       var removeButton = document.createElement("button");
+      removeButton.classList.add("delete-button");
       removeButton.innerHTML = '<i class="fas fa-trash"></i>';
       removeButton.addEventListener("click", function() {
           removeBookFromSession(book.bookId);
@@ -193,6 +193,7 @@ function displayBooksFromSession() {
 
       bookElement.appendChild(thumbnailElement);
       bookElement.appendChild(titleElement);
+      bookElement.appendChild(idElement);
       bookElement.appendChild(authorsElement);
       bookElement.appendChild(descriptionElement);
       bookElement.appendChild(removeButton);
