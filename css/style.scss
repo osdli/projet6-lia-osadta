@@ -171,6 +171,10 @@ h2,
         right: 10px; 
     }
 
+    .bookmark-button i {
+        color: $green-color;
+    }
+
     .book-thumbnail {
         margin: 0 auto;      
         margin-top: auto;
@@ -256,12 +260,19 @@ h2,
 }
 
      .book-card {
-        //@include bookStyle(150px, 225px);
         flex-basis: 100%;  
     }
     #searchForm button {
         display: block;
         margin-bottom: 10px;
+    }
+    .green-button,
+    .cancel-button,
+    .search-button {
+        border-radius: 5px;
+        font-size: 12px;
+        padding: 10px 20px;
+        color: white;
     }
 
 // Styles pour tablette

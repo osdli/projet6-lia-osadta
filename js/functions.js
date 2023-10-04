@@ -1,14 +1,16 @@
 // Fonction pour valider le formulaire de recherche
 function validateForm() {
-  var bookTitleInput = document.getElementById("bookTitle");
-  var authorInput = document.getElementById("author");
+  const bookTitleInput = document.getElementById("bookTitle");
+  const authorInput = document.getElementById("author");
 
   if (bookTitleInput.value.trim() === "" || authorInput.value.trim() === "") {
-    alert("Veuillez remplir tous les champs du formulaire.");
-    return false;
+      alert("Veuillez remplir tous les champs du formulaire.");
+      return false;
   }
   return true;
 }
+
+
 // Fonction pour rechercher les livres avec l'API de Google Books
 async function searchBooks(title, author) {
   const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${title ? `intitle:${title}` : ''}${author ? `+inauthor:${author}` : ''}`;
@@ -27,20 +29,19 @@ async function searchBooks(title, author) {
 }
  
 function displayResults(response) {
-  var resultsContainer = document.getElementById("resultsContainer");
+  const resultsContainer = document.getElementById("resultsContainer");
   resultsContainer.innerHTML = "";
 
   if (response.totalItems === 0) {
-    resultsContainer.innerHTML = "Aucun livre trouvé.";
-    return;
+      resultsContainer.innerHTML = "Aucun livre trouvé.";
+      return;
   }
 
-    var books = response.items;
-
+    const books = response.items;
     // Récupérer les ID de livres déjà dans la poch'liste pour ne pas les réafficher
-    var sessionData = sessionStorage.getItem("pochliste");
-    var pochlisteBooks = sessionData ? JSON.parse(sessionData) : [];
-    var pochlisteBookIds = pochlisteBooks.map(book => book.bookId);
+    const sessionData = sessionStorage.getItem("pochliste");
+    const pochlisteBooks = sessionData ? JSON.parse(sessionData) : [];
+    const pochlisteBookIds = pochlisteBooks.map(book => book.bookId);
 
     books.forEach(function(book) {
         // Si le livre est déjà dans la poch'liste, ne pas le réafficher dans les résultats de recherche
