@@ -1,0 +1,16 @@
+{
+  "name": "projet6",
+  "version": "1.0.0",
+  "description": "Pochlib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "sass --watch src/scss:dist/css",
+    "start": "npx live-server"
+  },
+  "author": "Lia Peyrard",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
