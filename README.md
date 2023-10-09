@@ -26,7 +26,11 @@ npm install
 
 5. Compilez SCSS: 
 
-npm run scss
+*cd /Users/username/Desktop/Livrables/Projet6/src/css
+
+*npm run scss
+
+*sass style.scss style.css 
 
 6. Démarrez l'application :
 
